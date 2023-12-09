@@ -23,8 +23,17 @@ public class View {
                 6. Обучить животное новым командам
                 7. Вывести список животных по дате рождения
                 8. Закончить работу""");
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        try {
+            Scanner scanner = new Scanner(System.in);
+            int point = scanner.nextInt();
+            if (point < 1 || point > 8) {
+                throw new InputMismatchException();
+            }
+            return point;
+        } catch (InputMismatchException e) {
+            System.out.println("Необходимо ввести цифровое значение от 1 до 8, повторите ввод");
+            return showMenu();
+        }
     }
 
     //Метод выведения всей информации о всех животных
